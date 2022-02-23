@@ -2,17 +2,25 @@
   font-size: 1.5rem;
   display: flex;
   align-items: center;
-  color: var(--light-theme-color);
   width: fit-content;
   padding: 5px;
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.2);
+  border-radius: var(--std-border-radius);
+  background: var(--semi-transparent);
   box-shadow: var(--std-box-shadow);
-  &-dark {
-    color: var(--dark-theme-color)
-  }
+
   &__switch {
-    background: #000;
     margin: 0 0.5rem;
   }
+
+  .arco-switch-checked {
+    background-color: inherit;
+  }
+}
+
+.theme-switch-light {
+  color: var(--light-theme-color);
+}
+
+.theme-switch-dark {
+  color: var(--dark-theme-color);
 }
