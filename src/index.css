@@ -19,7 +19,6 @@ body,
   --light-theme-color: black;
   --std-box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
     rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
-  --std-border-radius: 5px;
   --semi-transparent: rgba(255, 255, 255, 0.2);
   --std-separator-width: 10px;
   --std-separator-width-half: 5px;
