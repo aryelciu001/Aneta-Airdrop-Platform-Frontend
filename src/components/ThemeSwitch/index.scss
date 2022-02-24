@@ -7,6 +7,8 @@
   border-radius: var(--std-border-radius);
   background: var(--semi-transparent);
   box-shadow: var(--std-box-shadow);
+  box-sizing: border-box;
+  height: var(--navbar-el-height) !important;
 
   &__switch {
     margin: 0 0.5rem;

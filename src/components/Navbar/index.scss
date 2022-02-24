@@ -5,11 +5,12 @@
   padding: var(--std-separator-width) 0;
   align-items: center;
   flex-direction: row-reverse;
+  --navbar-el-height: 35px;
 
   &__button {
     background-color: var(--semi-transparent) !important;
     box-shadow: var(--std-box-shadow) !important;
-    border-radius: var(--std-border-radius) !important;
+    height: var(--navbar-el-height) !important;
   }
 
   & > * {
