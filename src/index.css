@@ -22,4 +22,5 @@ body,
   --std-border-radius: 5px;
   --semi-transparent: rgba(255, 255, 255, 0.2);
   --std-separator-width: 10px;
+  --std-separator-width-half: 5px;
 }

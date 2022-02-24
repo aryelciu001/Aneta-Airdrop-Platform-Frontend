@@ -1,0 +1,14 @@
+.airdrop-tool {
+  &__row {
+    display: flex;
+    flex-direction: row;
+  }
+  &__row > *:last-child {
+    margin-left: var(--std-separator-width-half);
+    margin-right: 0;
+  }
+  &__row > * {
+    flex: 1 1;
+    margin-right: var(--std-separator-width-half);
+  }
+}
