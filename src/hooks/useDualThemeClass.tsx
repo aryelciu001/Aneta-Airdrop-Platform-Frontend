@@ -12,6 +12,6 @@ export default function useDualThemeClass({ main, el }: Props) {
   const MAIN_CLASS = main;
   const ADD_CLASS = MAIN_CLASS + (darkTheme ? "-dark" : "-light");
   const CLASS = `${MAIN_CLASS} ${ADD_CLASS}`;
-  const EL_CLASS = `${MAIN_CLASS}__button ${ADD_CLASS}__button`;
+  const EL_CLASS = `${MAIN_CLASS}__${el} ${ADD_CLASS}__${el}`;
   return [CLASS, EL_CLASS];
 }
