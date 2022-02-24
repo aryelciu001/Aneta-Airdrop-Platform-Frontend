@@ -8,7 +8,6 @@
   --navbar-el-height: 35px;
 
   &__button {
-    background-color: var(--semi-transparent) !important;
     box-shadow: var(--std-box-shadow) !important;
     height: var(--navbar-el-height) !important;
   }
@@ -16,20 +15,18 @@
   & > * {
     margin-right: var(--std-separator-width);
   }
-
-  & > *:first-child {
-    margin-right: 0;
-  }
 }
 
 .navbar-dark {
   &__button {
-    color: var(--dark-theme-color) !important;
+    background-color: var(--dt-btn-color) !important;
+    color: var(--lt-color) !important;
   }
 }
 
 .navbar-light {
   &__button {
-    color: var(--light-theme-color) !important;
+    background-color: var(--lt-btn-color) !important;
+    color: var(--dt-color) !important;
   }
 }

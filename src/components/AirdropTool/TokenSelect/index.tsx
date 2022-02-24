@@ -3,14 +3,10 @@ import './index.scss'
 
 const Option = Select.Option;
 const options = ['a', 'b']
-interface Props {
-  className: string
-}
 
-export default function TokenSelect({ className }: Props) {
+export default function TokenSelect() {
   return (
     <Select
-      className={className}
       placeholder='Select token'
       onChange={(value) => console.log(value)}
       showSearch
