@@ -2,10 +2,10 @@ import TokenSelect from "./TokenSelect";
 import TokenDetail from "./TokenDetail";
 import useDualThemeClass from "hooks/useDualThemeClass";
 import { Button } from "@arco-design/web-react";
-import './index.scss'
+import "./index.scss";
 
-export default function AirdropTool () {
-  const COMPONENT_CLASS = "airdrop-tool"
+export default function AirdropTool() {
+  const COMPONENT_CLASS = "airdrop-tool";
 
   const [CLASS, CHILD_CLASS] = useDualThemeClass({
     main: COMPONENT_CLASS,
@@ -19,13 +19,15 @@ export default function AirdropTool () {
 
   return (
     <div className={CLASS}>
-      <div className={`${COMPONENT_CLASS}__token_input ${COMPONENT_CLASS}__row ${CHILD_CLASS}`}>
-        <TokenSelect/>
+      <div
+        className={`${COMPONENT_CLASS}__token_input ${COMPONENT_CLASS}__row ${CHILD_CLASS}`}
+      >
+        <TokenSelect />
         <Button>Add addresses</Button>
       </div>
       <div className={`${COMPONENT_CLASS}__row ${CHILD_CLASS}`}>
         <TokenDetail></TokenDetail>
       </div>
     </div>
-  )
+  );
 }

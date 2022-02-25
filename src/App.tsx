@@ -5,7 +5,7 @@ import AirdropTool from "components/AirdropTool";
 import useDualThemeClass from "hooks/useDualThemeClass";
 
 function App() {
-  const CONTAINER_CLASS = useDualThemeClass({ main: 'container', el: '' })[0]
+  const CONTAINER_CLASS = useDualThemeClass({ main: "container", el: "" })[0];
   return (
     <div className="App" style={useBackgroundImage()}>
       <div className={CONTAINER_CLASS}>

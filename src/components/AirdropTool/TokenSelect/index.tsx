@@ -1,13 +1,13 @@
-import { Select } from '@arco-design/web-react'
-import './index.scss'
+import { Select } from "@arco-design/web-react";
+import "./index.scss";
 
 const Option = Select.Option;
-const options = ['a', 'b']
+const options = ["a", "b"];
 
 export default function TokenSelect() {
   return (
     <Select
-      placeholder='Select token'
+      placeholder="Select token"
       onChange={(value) => console.log(value)}
       showSearch
     >
@@ -17,5 +17,5 @@ export default function TokenSelect() {
         </Option>
       ))}
     </Select>
-  )
+  );
 }
