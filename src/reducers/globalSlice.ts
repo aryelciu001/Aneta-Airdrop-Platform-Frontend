@@ -22,7 +22,7 @@ export const globalSlice = createSlice({
       state.tokenCurrency = payload
     },
     updateAddressArray: (state, { payload }: PayloadAction<string[]>) => {
-
+      state.addressArray = payload
     }
   },
 });
