@@ -4,5 +4,6 @@ export interface Token {
 
 export interface GlobalState {
   darkTheme: boolean,
-  tokenArray: Token[]
+  tokenArray: Token[],
+  tokenCurrency: string,
 }

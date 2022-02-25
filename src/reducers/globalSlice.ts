@@ -3,7 +3,8 @@ import { Token, GlobalState } from 'utils'
 
 const initialState: GlobalState = {
   darkTheme: false,
-  tokenArray: []
+  tokenArray: [],
+  tokenCurrency: '',
 }
 
 export const globalSlice = createSlice({
@@ -15,10 +16,13 @@ export const globalSlice = createSlice({
     },
     updateTokenArray: (state, { payload }: PayloadAction<Token[]>) => {
       state.tokenArray = payload
+    },
+    updateTokenCurrency: (state, { payload }: PayloadAction<string>) => {
+      state.tokenCurrency = payload
     }
   },
 });
 
-export const { toggleTheme } = globalSlice.actions;
+export const { toggleTheme, updateTokenArray, updateTokenCurrency } = globalSlice.actions;
 
 export default globalSlice.reducer;
