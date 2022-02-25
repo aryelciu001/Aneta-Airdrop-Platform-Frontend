@@ -27,6 +27,6 @@ export const globalSlice = createSlice({
   },
 });
 
-export const { toggleTheme, updateTokenArray, updateTokenCurrency } = globalSlice.actions;
+export const { toggleTheme, updateTokenArray, updateTokenCurrency, updateAddressArray } = globalSlice.actions;
 
 export default globalSlice.reducer;
