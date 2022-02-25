@@ -20,6 +20,6 @@ body,
   --semi-transparent: rgba(255, 255, 255, 0.1);
   --std-separator-width: 10px;
   --std-separator-width-half: 5px;
-  --dt-btn-color: #daebff;
-  --lt-btn-color: #35718D;
+  --dt-btn-color: linear-gradient(to right, #a1ffce, #faffd1);
+  --lt-btn-color: linear-gradient(to right, #4b79a1, #283e51);;
 }
