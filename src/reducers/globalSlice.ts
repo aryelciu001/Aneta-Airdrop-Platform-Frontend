@@ -5,6 +5,7 @@ const initialState: GlobalState = {
   darkTheme: false,
   tokenArray: [],
   tokenCurrency: '',
+  addressArray: []
 }
 
 export const globalSlice = createSlice({
@@ -19,6 +20,9 @@ export const globalSlice = createSlice({
     },
     updateTokenCurrency: (state, { payload }: PayloadAction<string>) => {
       state.tokenCurrency = payload
+    },
+    updateAddressArray: (state, { payload }: PayloadAction<string[]>) => {
+
     }
   },
 });

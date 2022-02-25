@@ -6,4 +6,5 @@ export interface GlobalState {
   darkTheme: boolean,
   tokenArray: Token[],
   tokenCurrency: string,
+  addressArray: string[]
 }
