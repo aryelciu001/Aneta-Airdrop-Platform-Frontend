@@ -3,6 +3,7 @@ import useBackgroundImage from "hooks/useBackgroundImage";
 import Navbar from "components/Navbar";
 import AirdropTool from "components/AirdropTool";
 import useDualThemeClass from "hooks/useDualThemeClass";
+import { useEffect } from "react";
 
 function App() {
   const CONTAINER_CLASS = useDualThemeClass({ main: "container", el: "" })[0];

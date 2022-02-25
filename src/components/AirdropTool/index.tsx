@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react'
 import TokenSelect from "./TokenSelect";
 import TokenDetail from "./TokenDetail";
 import useDualThemeClass from "hooks/useDualThemeClass";
@@ -11,11 +12,6 @@ export default function AirdropTool() {
     main: COMPONENT_CLASS,
     el: "child",
   });
-
-  const BUTTON_CLASS = useDualThemeClass({
-    main: COMPONENT_CLASS,
-    el: "add-address-button",
-  })[1];
 
   return (
     <div className={CLASS}>
