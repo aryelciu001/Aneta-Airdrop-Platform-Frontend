@@ -21,7 +21,6 @@ export default function TokenDetail() {
 
   return (
     <div className={COMPONENT_CLASS}>
-      <h2>Airdrop Parameters</h2>
       <div className={`${COMPONENT_CLASS}__row`}>
         <span>Tokens per wallet</span>
         <InputNumber

@@ -1,5 +1,8 @@
 .token-detail {
   width: 100%;
+  h2 {
+    margin: 0;
+  }
   &__row {
     margin-bottom: calc(1.5 * var(--std-separator-width));
     display: flex;
