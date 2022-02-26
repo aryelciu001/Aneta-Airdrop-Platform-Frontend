@@ -1,5 +1,5 @@
 import { Button } from "@arco-design/web-react";
-import ThemeSwitch from "components/ThemeSwitch";
+import ThemeSwitch from "components/Navbar/ThemeSwitch";
 import useDualThemeClass from "hooks/useDualThemeClass";
 import "./index.scss";
 
