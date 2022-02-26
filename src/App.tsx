@@ -5,25 +5,25 @@ import AirdropTool from "components/AirdropTool";
 import useDualThemeClass from "hooks/useDualThemeClass";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { updateTokenArray } from 'reducers/globalSlice'
+import { updateTokenArray } from "reducers/globalSlice";
 
 function App() {
   const CONTAINER_CLASS = useDualThemeClass({ main: "container", el: "" })[0];
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   useEffect(() => {
     // retrieve token array
     const tokenArray = [
       {
-        name: 'ADA'
+        name: "ADA",
       },
       {
-        name: 'NETA'
-      }
-    ]
-    dispatch(updateTokenArray(tokenArray))
-  }, [])
+        name: "NETA",
+      },
+    ];
+    dispatch(updateTokenArray(tokenArray));
+  }, [dispatch]);
 
   return (
     <div className="App" style={useBackgroundImage()}>

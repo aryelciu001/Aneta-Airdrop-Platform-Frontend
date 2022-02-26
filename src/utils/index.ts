@@ -1,10 +1,10 @@
 export interface Token {
-  name: string
+  name: string;
 }
 
 export interface GlobalState {
-  darkTheme: boolean,
-  tokenArray: Token[],
-  tokenCurrency: string,
-  addressArray: string[]
+  darkTheme: boolean;
+  tokenArray: Token[];
+  tokenCurrency: string;
+  addressArray: string[];
 }

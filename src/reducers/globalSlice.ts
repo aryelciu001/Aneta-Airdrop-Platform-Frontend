@@ -1,12 +1,12 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Token, GlobalState } from 'utils'
+import { Token, GlobalState } from "utils";
 
 const initialState: GlobalState = {
   darkTheme: false,
   tokenArray: [],
-  tokenCurrency: '',
-  addressArray: []
-}
+  tokenCurrency: "",
+  addressArray: [],
+};
 
 export const globalSlice = createSlice({
   name: "global",
@@ -16,17 +16,22 @@ export const globalSlice = createSlice({
       state.darkTheme = !state.darkTheme;
     },
     updateTokenArray: (state, { payload }: PayloadAction<Token[]>) => {
-      state.tokenArray = payload
+      state.tokenArray = payload;
     },
     updateTokenCurrency: (state, { payload }: PayloadAction<string>) => {
-      state.tokenCurrency = payload
+      state.tokenCurrency = payload;
     },
     updateAddressArray: (state, { payload }: PayloadAction<string[]>) => {
-      state.addressArray = payload
-    }
+      state.addressArray = payload;
+    },
   },
 });
 
-export const { toggleTheme, updateTokenArray, updateTokenCurrency, updateAddressArray } = globalSlice.actions;
+export const {
+  toggleTheme,
+  updateTokenArray,
+  updateTokenCurrency,
+  updateAddressArray,
+} = globalSlice.actions;
 
 export default globalSlice.reducer;
