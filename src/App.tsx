@@ -7,6 +7,16 @@ import { useEffect } from "react";
 import { useDispatch, useSelector, RootStateOrAny } from "react-redux";
 import { updateTokenArray } from "reducers/globalSlice";
 import { Address } from "@emurgo/cardano-serialization-lib-asmjs";
+import { Buffer } from "buffer";
+
+const tokenArray = [
+  {
+    name: "ADA",
+  },
+  {
+    name: "NETA",
+  },
+];
 
 function App() {
   const CONTAINER_CLASS = useDualThemeClass({ main: "container", el: "" })[0];
@@ -17,14 +27,7 @@ function App() {
     /**
      * this is where we need to retrieve token array
      */
-    const tokenArray = [
-      {
-        name: "ADA",
-      },
-      {
-        name: "NETA",
-      },
-    ];
+
     dispatch(updateTokenArray(tokenArray));
   }, [dispatch]);
 
