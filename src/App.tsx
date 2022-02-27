@@ -4,16 +4,18 @@ import Navbar from "components/Navbar";
 import AirdropTool from "components/AirdropTool";
 import useDualThemeClass from "hooks/useDualThemeClass";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector, RootStateOrAny } from "react-redux";
 import { updateTokenArray } from "reducers/globalSlice";
 
 function App() {
   const CONTAINER_CLASS = useDualThemeClass({ main: "container", el: "" })[0];
-
+  const api = useSelector((state: RootStateOrAny) => state.blockchain.api);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // retrieve token array
+    /**
+     * this is where we need to retrieve token array
+     */
     const tokenArray = [
       {
         name: "ADA",
@@ -24,6 +26,14 @@ function App() {
     ];
     dispatch(updateTokenArray(tokenArray));
   }, [dispatch]);
+
+  useEffect(() => {
+    /**
+     * check if wallet is connected
+     * and api is working
+     */
+    console.log(api);
+  }, [api]);
 
   return (
     <div className="App" style={useBackgroundImage()}>

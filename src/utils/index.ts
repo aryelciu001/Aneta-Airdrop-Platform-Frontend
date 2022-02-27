@@ -9,8 +9,11 @@ export interface GlobalState {
   addressArray: string[];
 }
 
+export type API = object | undefined;
+
 export interface BlockchainState {
-  api: object | undefined;
+  api: API;
+  wallet: string;
 }
 
 export enum WalletName {
