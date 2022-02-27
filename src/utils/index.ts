@@ -8,3 +8,12 @@ export interface GlobalState {
   tokenCurrency: string;
   addressArray: string[];
 }
+
+export interface BlockchainState {
+  api: object | undefined;
+}
+
+export enum WalletName {
+  NAMI = "nami",
+  CCVAULT = "ccvault",
+}
