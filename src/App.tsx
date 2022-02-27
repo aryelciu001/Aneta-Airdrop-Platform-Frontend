@@ -6,6 +6,7 @@ import useDualThemeClass from "hooks/useDualThemeClass";
 import { useEffect } from "react";
 import { useDispatch, useSelector, RootStateOrAny } from "react-redux";
 import { updateTokenArray } from "reducers/globalSlice";
+import { Address } from "@emurgo/cardano-serialization-lib-asmjs";
 
 function App() {
   const CONTAINER_CLASS = useDualThemeClass({ main: "container", el: "" })[0];
@@ -32,7 +33,16 @@ function App() {
      * check if wallet is connected
      * and api is working
      */
-    console.log(api);
+    (async function () {
+      console.log(api);
+      let address = await api.getChangeAddress();
+      try {
+        address = Address.from_bytes(Buffer.from(address, "hex")).to_bech32();
+        console.log(address);
+      } catch (err) {
+        console.log(err);
+      }
+    })();
   }, [api]);
 
   return (
