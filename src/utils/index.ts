@@ -13,7 +13,8 @@ export type API = object | undefined;
 
 export interface BlockchainState {
   api: API;
-  wallet: string;
+  walletName: string;
+  walletAddress: string;
 }
 
 export enum WalletName {
