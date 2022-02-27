@@ -1,4 +1,4 @@
-import { useSelector, useDispatch, RootStateOrAny } from "react-redux";
+import { useSelector, RootStateOrAny } from "react-redux";
 
 export default function useBackgroundImage() {
   const darkTheme = useSelector(

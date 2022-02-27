@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@arco-design/web-react": "^2.29.1",
+    "@emurgo/cardano-serialization-lib-asmjs": "^10.0.4",
     "@reduxjs/toolkit": "^1.7.2",
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.3",
