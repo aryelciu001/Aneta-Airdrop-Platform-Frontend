@@ -3,8 +3,7 @@ import { BlockchainState, WalletName } from "utils";
 
 const initialState: BlockchainState = {
   api: undefined,
-  walletName: WalletName.NAMI,
-  walletAddress: ''
+  walletAddress: "",
 };
 
 export const blockchainSlice = createSlice({
@@ -17,12 +16,9 @@ export const blockchainSlice = createSlice({
     setWalletAddress: (state, { payload }: PayloadAction<string>) => {
       state.walletAddress = payload;
     },
-    setWalletName: (state, { payload }: PayloadAction<string>) => {
-      state.walletName = payload;
-    },
   },
 });
 
-export const { setApi, setWalletAddress, setWalletName } = blockchainSlice.actions;
+export const { setApi, setWalletAddress } = blockchainSlice.actions;
 
 export default blockchainSlice.reducer;

@@ -13,7 +13,6 @@ export type API = object | undefined;
 
 export interface BlockchainState {
   api: API;
-  walletName: string;
   walletAddress: string;
 }
 

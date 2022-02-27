@@ -38,12 +38,12 @@ function App() {
      * and api is working
      */
     (async function () {
-      if (api == null) return
+      if (api == null) return;
       let address = await api.getChangeAddress();
       try {
         address = Address.from_bytes(Buffer.from(address, "hex")).to_bech32();
         if (address) {
-          dispatch(setWalletAddress(address))
+          dispatch(setWalletAddress(address));
         }
       } catch (err) {
         console.log(err);

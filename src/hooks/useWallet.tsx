@@ -4,14 +4,11 @@ import { WalletName, API } from "utils";
 
 export default function useWallet() {
   const dispatch = useDispatch();
-  const wallet = useSelector(
-    (state: RootStateOrAny) => state.blockchain.wallet
-  );
 
-  const enableWallet = async () => {
+  const enableWallet = async (walletName: string) => {
     try {
       let API: API = undefined;
-      switch (wallet) {
+      switch (walletName) {
         case WalletName.NAMI:
           API = await (window as any).cardano.nami.enable();
           break;
