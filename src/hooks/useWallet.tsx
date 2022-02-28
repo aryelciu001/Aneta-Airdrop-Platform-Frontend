@@ -20,6 +20,7 @@ export default function useWallet() {
         default:
           throw new Error();
       }
+      localStorage.setItem("wallet", walletName);
       dispatch(setApi(API));
     } catch (err) {
       window.alert("Something is wrong");

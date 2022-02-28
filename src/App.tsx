@@ -15,7 +15,16 @@ function App() {
   const CONTAINER_CLASS = useDualThemeClass({ main: "container", el: "" })[0];
   const api = useSelector((state: RootStateOrAny) => state.blockchain.api);
   const dispatch = useDispatch();
-  const { getWalletSummary } = useWallet();
+  const { getWalletSummary, enableWallet } = useWallet();
+
+  useEffect(() => {
+    setTimeout(() => {
+      const selectedWallet = localStorage.getItem("wallet");
+      if (selectedWallet) {
+        enableWallet(selectedWallet);
+      }
+    }, 500);
+  }, []);
 
   useEffect(() => {
     /**
