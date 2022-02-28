@@ -20,3 +20,7 @@ export enum WalletName {
   NAMI = "nami",
   CCVAULT = "ccvault",
 }
+
+export interface AssetsSummary {
+  [key: string]: number;
+}

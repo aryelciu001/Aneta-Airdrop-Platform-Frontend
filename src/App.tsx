@@ -9,28 +9,13 @@ import { updateTokenArray } from "reducers/globalSlice";
 import { setWalletAddress } from "reducers/blockchainSlice";
 import { Address } from "@emurgo/cardano-serialization-lib-asmjs";
 import { Buffer } from "buffer";
-
-const tokenArray = [
-  {
-    name: "ADA",
-  },
-  {
-    name: "NETA",
-  },
-];
+import useWallet from "hooks/useWallet";
 
 function App() {
   const CONTAINER_CLASS = useDualThemeClass({ main: "container", el: "" })[0];
   const api = useSelector((state: RootStateOrAny) => state.blockchain.api);
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    /**
-     * this is where we need to retrieve token array
-     */
-
-    dispatch(updateTokenArray(tokenArray));
-  }, [dispatch]);
+  const { getWalletSummary } = useWallet();
 
   useEffect(() => {
     /**
@@ -48,6 +33,14 @@ function App() {
       } catch (err) {
         console.log(err);
       }
+      const walletSummary = await getWalletSummary(api);
+      const tokenArray = Object.keys(walletSummary).map((policyId: string) => {
+        return {
+          name: policyId,
+          amount: walletSummary[policyId],
+        };
+      });
+      dispatch(updateTokenArray(tokenArray));
     })();
   }, [api]);
 

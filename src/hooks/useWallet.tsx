@@ -1,6 +1,8 @@
-import { RootStateOrAny, useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setApi } from "reducers/blockchainSlice";
-import { WalletName, API } from "utils";
+import { WalletName, API, AssetsSummary } from "utils";
+import { TransactionUnspentOutput } from "@emurgo/cardano-serialization-lib-asmjs";
+let Buffer = require("buffer").Buffer;
 
 export default function useWallet() {
   const dispatch = useDispatch();
@@ -24,5 +26,81 @@ export default function useWallet() {
       console.log(err);
     }
   };
-  return [enableWallet];
+
+  const getWalletSummary = async (API: any): Promise<AssetsSummary> => {
+    let assetsSummary: AssetsSummary = {
+      Ada: 0,
+    };
+
+    try {
+      /**
+       * Only fetch usable UTXOs
+       * check another function to get the collateral
+       */
+      const rawUtxos: string[] = await API.getUtxos();
+
+      for (const rawUtxo of rawUtxos) {
+        const { amount, multiasset } = parseUtxo(rawUtxo);
+        assetsSummary["Ada"] += Number(amount);
+
+        if (multiasset) {
+          /**
+           * Check all asset type other than ADA
+           * in each utxo
+           */
+          const keys = multiasset.keys();
+          const numberOfAssetType = keys.len();
+
+          for (let i = 0; i < numberOfAssetType; i++) {
+            const policyId = keys.get(i);
+
+            const assets = multiasset.get(policyId);
+            if (assets == null) continue;
+            const assetNames = assets.keys();
+            const K = assetNames.len();
+
+            const policyIdString = convertBufferToHex(policyId.to_bytes());
+
+            if (!assetsSummary[policyIdString]) {
+              assetsSummary[policyIdString] = 0;
+            }
+
+            /**
+             * Check a specific policy ID
+             */
+            for (let j = 0; j < K; j++) {
+              const assetName = assetNames.get(j);
+              const multiassetAmt = multiasset.get_asset(policyId, assetName);
+              const assetAmount = multiassetAmt.to_str();
+              assetsSummary[policyIdString] += Number(assetAmount);
+            }
+          }
+        }
+      }
+    } catch (err) {
+      console.log(err);
+    }
+    return assetsSummary;
+  };
+
+  return {
+    enableWallet: enableWallet,
+    getWalletSummary: getWalletSummary,
+  };
+}
+
+function parseUtxo(rawUtxo: string) {
+  const utxo = TransactionUnspentOutput.from_bytes(Buffer.from(rawUtxo, "hex"));
+  const output = utxo.output();
+  const amount = output.amount().coin().to_str(); // ADA amount in lovelace
+  const multiasset = output.amount().multiasset();
+  return {
+    amount,
+    multiasset,
+  };
+}
+
+function convertBufferToHex(inBuffer: Uint8Array): string {
+  const inString = Buffer.from(inBuffer, "utf8").toString("hex");
+  return inString;
 }

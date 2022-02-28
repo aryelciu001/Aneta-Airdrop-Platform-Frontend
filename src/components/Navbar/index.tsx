@@ -14,15 +14,11 @@ export default function Navbar() {
     main: CONTAINER_CLASS,
     el: "button",
   });
-  const [enableWallet] = useWallet();
+  const { enableWallet } = useWallet();
   const [btnText, setBtnText] = useState("Connect wallet");
   const walletAddress = useSelector(
     (state: RootStateOrAny) => state.blockchain.walletAddress
   );
-
-  const connectWallet = (walletName: string) => {
-    enableWallet(walletName);
-  };
 
   useEffect(() => {
     if (walletAddress) {
@@ -33,8 +29,8 @@ export default function Navbar() {
   const selectWalletBtns = () => {
     return (
       <div className={`${CONTAINER_CLASS}__select-wallet`}>
-        <Button onClick={() => connectWallet(WalletName.NAMI)}>Nami</Button>
-        <Button onClick={() => connectWallet(WalletName.CCVAULT)}>
+        <Button onClick={() => enableWallet(WalletName.NAMI)}>Nami</Button>
+        <Button onClick={() => enableWallet(WalletName.CCVAULT)}>
           CCVault
         </Button>
       </div>
