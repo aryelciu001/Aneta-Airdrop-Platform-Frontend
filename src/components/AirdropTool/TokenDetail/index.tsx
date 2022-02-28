@@ -8,7 +8,7 @@ const COMPONENT_CLASS = "token-detail";
 
 export default function TokenDetail() {
   const [tokenPerWallet, setTokenPerWallet] = useState(0);
-  const { tokenCurrency, addressArray } = useSelector(
+  const { selectedToken, addressArray } = useSelector(
     (state: RootStateOrAny) => state.global
   );
 
@@ -16,7 +16,7 @@ export default function TokenDetail() {
   const totalTokenToBeAirdropped = tokenPerWallet * addressArrayLength;
 
   const sendToken = () => {
-    console.log(`Sending ${totalTokenToBeAirdropped} ${tokenCurrency}...`);
+    console.log(`Sending ${totalTokenToBeAirdropped} ${selectedToken.name}...`);
   };
 
   return (
@@ -32,9 +32,15 @@ export default function TokenDetail() {
         />
       </div>
       <div className={`${COMPONENT_CLASS}__row`}>
+        <span>Balance in wallet</span>
+        <span>
+          {(selectedToken.amount / 1000000).toFixed(2)} {selectedToken.name}
+        </span>
+      </div>
+      <div className={`${COMPONENT_CLASS}__row`}>
         <span>Total tokens to be airdropped</span>
         <span>
-          {totalTokenToBeAirdropped} {tokenCurrency}
+          {totalTokenToBeAirdropped} {selectedToken.name}
         </span>
       </div>
       <div className={`${COMPONENT_CLASS}__row`}>
@@ -47,7 +53,7 @@ export default function TokenDetail() {
           disabled={
             tokenPerWallet === 0 ||
             typeof tokenPerWallet !== "number" ||
-            tokenCurrency === "" ||
+            selectedToken.name === "" ||
             addressArrayLength === 0
           }
         >

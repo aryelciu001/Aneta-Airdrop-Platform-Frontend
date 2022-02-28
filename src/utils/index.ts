@@ -1,11 +1,12 @@
 export interface Token {
   name: string;
+  amount: number;
 }
 
 export interface GlobalState {
   darkTheme: boolean;
   tokenArray: Token[];
-  tokenCurrency: string;
+  selectedToken: Token;
   addressArray: string[];
 }
 

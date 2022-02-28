@@ -1,6 +1,6 @@
 import { Select } from "@arco-design/web-react";
 import { useSelector, RootStateOrAny, useDispatch } from "react-redux";
-import { updateTokenCurrency } from "reducers/globalSlice";
+import { updateSelectedToken } from "reducers/globalSlice";
 import { Token } from "utils";
 import "./index.scss";
 
@@ -15,12 +15,20 @@ export default function TokenSelect() {
   return (
     <Select
       placeholder="Select token"
-      onChange={(value) => dispatch(updateTokenCurrency(value))}
+      // onChange={(value) => }
       showSearch
       disabled={!tokenArray.length}
     >
       {tokenArray.map((token: Token, index: number) => (
-        <Option key={index} value={token.name}>
+        <Option
+          key={index}
+          value={token.name}
+          onClick={() =>
+            dispatch(
+              updateSelectedToken({ name: token.name, amount: token.amount })
+            )
+          }
+        >
           {token.name}
         </Option>
       ))}
