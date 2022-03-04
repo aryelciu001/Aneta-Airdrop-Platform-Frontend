@@ -5,6 +5,7 @@ import useWallet from "hooks/useWallet";
 import { useEffect, useState } from "react";
 import { RootStateOrAny, useSelector } from "react-redux";
 import { WalletName } from "utils";
+import Logo from "assets/logo.png"
 import "./index.scss";
 
 const CONTAINER_CLASS = "navbar";
@@ -48,6 +49,7 @@ export default function Navbar() {
       >
         <Button className={EL_CLASS}>{btnText}</Button>
       </Popover>
+      <img className={`${CONTAINER_CLASS}__logo`} src={Logo}></img>
     </div>
   );
 }
