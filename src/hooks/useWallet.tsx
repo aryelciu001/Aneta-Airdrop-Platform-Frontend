@@ -2,6 +2,7 @@ import { useDispatch } from "react-redux";
 import { setApi } from "reducers/blockchainSlice";
 import { WalletName, API, AssetsSummary } from "utils";
 import { TransactionUnspentOutput } from "@emurgo/cardano-serialization-lib-asmjs";
+// import axios from 'axios';
 let Buffer = require("buffer").Buffer;
 
 export default function useWallet() {
@@ -30,7 +31,7 @@ export default function useWallet() {
 
   const getWalletSummary = async (API: any): Promise<AssetsSummary> => {
     let assetsSummary: AssetsSummary = {
-      Ada: 0,
+      ADA: 0,
     };
 
     try {
@@ -42,7 +43,7 @@ export default function useWallet() {
 
       for (const rawUtxo of rawUtxos) {
         const { amount, multiasset } = parseUtxo(rawUtxo);
-        assetsSummary["Ada"] += Number(amount);
+        assetsSummary["ADA"] += Number(amount);
 
         if (multiasset) {
           /**
@@ -81,6 +82,7 @@ export default function useWallet() {
     } catch (err) {
       console.log(err);
     }
+    
     return assetsSummary;
   };
 
@@ -105,3 +107,19 @@ function convertBufferToHex(inBuffer: Uint8Array): string {
   const inString = Buffer.from(inBuffer, "utf8").toString("hex");
   return inString;
 }
+
+// async function getTokenData (tokens: AssetsSummary) {
+//   const uri = "https://tokens.cardano.org/metadata/"
+
+//   const body = JSON.stringify({
+//     subjects: [...Object.keys(tokens)],
+//     properties: ["ticker"]
+//   })
+
+//   const headers = {
+//     'content-type': 'application/json;charset=utf-8'
+//   }
+
+//   const response = await axios.get(uri + "8fef2d34078659493ce161a6c7fba4b56afefa8535296a5743f6958741414441")
+//   return response.data
+// }
